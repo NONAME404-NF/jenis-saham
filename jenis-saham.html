@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jenis-Jenis Saham</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stock-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #3498db;
+        }
+        .stock-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .stock-card.defensive { border-left-color: #2ecc71; }
+        .stock-card.cyclical { border-left-color: #e74c3c; }
+        .stock-card.growth { border-left-color: #9b59b6; }
+        .stock-card.value { border-left-color: #f1c40f; }
+        .stock-card.income { border-left-color: #3498db; }
+        .stock-card.speculative { border-left-color: #e67e22; }
+        .stock-card.blue-chip { border-left-color: #2c3e50; }
+        .stock-card.second-liner { border-left-color: #16a085; }
+        .stock-card.third-liner { border-left-color: #d35400; }
+        .stock-title {
+            font-size: 1.4rem;
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .stock-details {
+            margin: 15px 0;
+        }
+        .detail-item {
+            margin-bottom: 12px;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 3px;
+        }
+        .detail-content {
+            margin-left: 0;
+        }
+        .risk-meter {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .risk-level {
+            height: 100%;
+            border-radius: 5px;
+        }
+        .low-risk { background-color: #2ecc71; width: 25%; }
+        .medium-risk { background-color: #f1c40f; width: 50%; }
+        .high-risk { background-color: #e74c3c; width: 75%; }
+        .very-high-risk { background-color: #c0392b; width: 95%; }
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .stock-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Jenis-Jenis Saham</h1>
+        <p class="subtitle">Klasifikasi Saham Berdasarkan Karakteristik dan Risiko</p>
+    </div>
+
+    <div class="stock-grid">
+        <!-- Defensif -->
+        <div class="stock-card defensive">
+            <h2 class="stock-title">Saham Defensif</h2>
+            <div class="stock-details">
+                <div class="detail-item">
+                    <span class="detail-label">Ciri Utama:</span>
+                    <div class="detail-content">Tetap stabil walau ekonomi lesu</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Contoh Sektor:</span>
+                    <div class="detail-content">Konsumsi harian, Farmasi</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Kelebihan:</span>
+                    <div class="detail-content">Stabil, cocok jangka panjang</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Risiko:</span>
+                    <div class="detail-content">Pertumbuhan terbatas</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Tingkat Risiko:</span>
+                    <div class="risk-meter">
+                        <div class="risk-level low-risk"></div>
+                    </div>
+                    <div class="risk-labels">
+                        <span>Rendah</span>
+                        <span>Tinggi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Siklis (Cyclical) -->
+        <div class="stock-card cyclical">
+            <h2 class="stock-title">Saham Siklis (Cyclical)</h2>
+            <div class="stock-details">
+                <div class="detail-item">
+                    <span class="detail-label">Ciri Utama:</span>
+                    <div class="detail-content">Ikut naik-turun sesuai ekonomi</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Contoh Sektor:</span>
+                    <div class="detail-content">Properti, Otomotif, Pariwisata</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Kelebihan:</span>
+                    <div class="detail-content">Potensi untung besar saat ekonomi tumbuh</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Risiko:</span>
+                    <div class="detail-content">Turun drastis saat krisis</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Tingkat Risiko:</span>
+                    <div class="risk-meter">
+                        <div class="risk-level high-risk"></div>
+                    </div>
+                    <div class="risk-labels">
+                        <span>Rendah</span>
+                        <span>Tinggi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pertumbuhan (Growth) -->
+        <div class="stock-card growth">
+            <h2 class="stock-title">Saham Pertumbuhan (Growth)</h2>
+            <div class="stock-details">
+                <div class="detail-item">
+                    <span class="detail-label">Ciri Utama:</span>
+                    <div class="detail-content">Terus bertumbuh, jarang bagi dividen</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Contoh Sektor:</span>
+                    <div class="detail-content">Teknologi, Startup besar</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Kelebihan:</span>
+                    <div class="detail-content">Potensi capital gain tinggi</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Risiko:</span>
+                    <div class="detail-content">Risiko valuasi terlalu mahal</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Tingkat Risiko:</span>
+                    <div class="risk-meter">
+                        <div class="risk-level high-risk"></div>
+                    </div>
+                    <div class="risk-labels">
+                        <span>Rendah</span>
+                        <span>Tinggi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nilai (Value) -->
+        <div class="stock-card value">
+            <h2 class="stock-title">Saham Nilai (Value)</h2>
+            <div class="stock-details">
+                <div class="detail-item">
+                    <span class="detail-label">Ciri Utama:</span>
+                    <div class="detail-content">Harga saham lebih rendah dari nilai intrinsik (undervalued)</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Contoh Sektor:</span>
+                    <div class="detail-content">Berbagai sektor</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Kelebihan:</span>
+                    <div class="detail-content">Potensi keuntungan saat harga terkoreksi</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Risiko:</span>
+                    <div class="detail-content">Analisis mendalam, tidak cepat naik</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Tingkat Risiko:</span>
+                    <div class="risk-meter">
+                        <div class="risk-level medium-risk"></div>
+                    </div>
+                    <div class="risk-labels">
+                        <span>Rendah</span>
+                        <span>Tinggi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pendapatan (Income) -->
+        <div class="stock-card income">
+            <h2 class="stock-title">Saham Pendapatan (Income)</h2>
+            <div class="stock-details">
+                <div class="detail-item">
+                    <span class="detail-label">Ciri Utama:</span>
+                    <div class="detail-content">Rajin bagi dividen tinggi & stabil</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Contoh Sektor:</span>
+                    <div class="detail-content">Perbankan, BUMN besar</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Kelebihan:</span>
+                    <div class="detail-content">Dapat cash flow rutin</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Risiko:</span>
+                    <div class="detail-content">Capital gain tidak terlalu besar</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Tingkat Risiko:</span>
+                    <div class="risk-meter">
+                        <div class="risk-level low-risk"></div>
+                    </div>
+                    <div class="risk-labels">
+                        <span>Rendah</span>
+                        <span>Tinggi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spekulatif -->
+        <div class="stock-card speculative">
+            <h2 class="stock-title">Saham Spekulatif</h2>
+            <div class="stock-details">
+                <div class="detail-item">
+                    <span class="detail-label">Ciri Utama:</span>
+                    <div class="detail-content">Prospek belum jelas, bisa meledak atau anjlok</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Contoh Sektor:</span>
+                    <div class="detail-content">Perusahaan kecil, startup baru</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Kelebihan:</span>
+                    <div class="detail-content">Potensi untung besar cepat</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Risiko:</span>
+                    <div class="detail-content">Risiko rugi total</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Tingkat Risiko:</span>
+                    <div class="risk-meter">
+                        <div class="risk-level very-high-risk"></div>
+                    </div>
+                    <div class="risk-labels">
+                        <span>Rendah</span>
+                        <span>Tinggi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blue Chip -->
+        <div class="stock-card blue-chip">
+            <h2 class="stock-title">Saham Blue Chip</h2>
+            <div class="stock-details">
+                <div class="detail-item">
+                    <span class="detail-label">Ciri Utama:</span>
+                    <div class="detail-content">Perusahaan besar, mapan, stabil, likuid, dipercaya investor</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Contoh:</span>
+                    <div class="detail-content">Bank BCA, Telkom, Astra</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Kelebihan:</span>
+                    <div class="detail-content">Stabil dan relatif aman</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Risiko:</span>
+                    <div class="detail-content">Harga relatif mahal, pertumbuhan moderat</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Tingkat Risiko:</span>
+                    <div class="risk-meter">
+                        <div class="risk-level low-risk"></div>
+                    </div>
+                    <div class="risk-labels">
+                        <span>Rendah</span>
+                        <span>Tinggi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Liner -->
+        <div class="stock-card second-liner">
+            <h2 class="stock-title">Saham Second Liner</h2>
+            <div class="stock-details">
+                <div class="detail-item">
+                    <span class="detail-label">Ciri Utama:</span>
+                    <div class="detail-content">Perusahaan menengah, cukup berkembang</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Contoh Sektor:</span>
+                    <div class="detail-content">Manufaktur menengah</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Kelebihan:</span>
+                    <div class="detail-content">Bisa tumbuh lebih cepat dari blue chip</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Risiko:</span>
+                    <div class="detail-content">Risiko lebih tinggi</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Tingkat Risiko:</span>
+                    <div class="risk-meter">
+                        <div class="risk-level medium-risk"></div>
+                    </div>
+                    <div class="risk-labels">
+                        <span>Rendah</span>
+                        <span>Tinggi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Liner -->
+        <div class="stock-card third-liner">
+            <h2 class="stock-title">Saham Third Liner</h2>
+            <div class="stock-details">
+                <div class="detail-item">
+                    <span class="detail-label">Ciri Utama:</span>
+                    <div class="detail-content">Perusahaan kecil, sering jadi saham gorengan</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Contoh:</span>
+                    <div class="detail-content">Emiten baru/kecil</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Kelebihan:</span>
+                    <div class="detail-content">Bisa naik cepat karena spekulasi</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Risiko:</span>
+                    <div class="detail-content">Sangat berisiko, rawan manipulasi harga</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Tingkat Risiko:</span>
+                    <div class="risk-meter">
+                        <div class="risk-level very-high-risk"></div>
+                    </div>
+                    <div class="risk-labels">
+                        <span>Rendah</span>
+                        <span>Tinggi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2023 Panduan Investasi Saham | Diagram ini memberikan gambaran umum tentang jenis-jenis saham</p>
+        <p>Selalu lakukan penelitian mendalam sebelum membuat keputusan investasi</p>
+    </div>
+</body>
+</html>
